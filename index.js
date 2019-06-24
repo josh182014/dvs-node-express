@@ -1,4 +1,4 @@
-// includes server and setup for dummyroutes
+// includes server and setup for routes
 
 
 const server = require("./server");
