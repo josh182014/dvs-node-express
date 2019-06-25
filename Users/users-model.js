@@ -1,7 +1,7 @@
-// actions -helper functions
+// This file is needed for the app to get and add information
 
 
-const db = require('../dbConfig');
+const db = require('../database/dbConfig');
 
 module.exports = {
     add,
