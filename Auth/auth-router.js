@@ -1,59 +1,68 @@
-const router = require('express').Router();
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+//authentication workflow using JSON Web Tokens
 
-const Users = require('../users/users-model.js');
-const secrets = require('../config/secrets.js');
+const router = require("express").Router();
+const bcrypt = require("bcryptjs"); //verify passwords
+const jwt = require("jsonwebtoken"); // verify token
+
+const Users = require("../users/users-model.js");
+const secrets = require("../config/secrets.js");
 
 // for endpoints beginning with /api/auth
-router.post('/register', (req, res) => {
-    let user = req.body;
-    const hash = bcrypt.hashSync(user.password, 10); // 2 ^ n
-    user.password = hash;
+router.post("/register", (req, res) => {
+  let user = req.body; //sending all user info
+  const hash = bcrypt.hashSync(user.password, 10); // 2 ^ n //making pw secure (random assortment - 10x)
+  user.password = hash; //changing user password into the hash - new coded password- final encryption
 
-    Users.add(user)
-        .then(saved => {
-            res.status(201).json(saved);
-        })
-        .catch(error => {
-            res.status(500).json(error);
-        });
+  Users.add(user)
+    .then(saved => {
+      res.status(201).json(saved);
+    })
+    .catch(error => {
+      res.status(500).json(error);
+    });
 });
 
-router.post('/login', (req, res) => {
-    let { username, password } = req.body;
+router.post("/login", (req, res) => {
+  let { username, password } = req.body;
 
-    Users.findBy({ username })
-        .first()
-        .then(user => {
-            if (user && bcrypt.compareSync(password, user.password)) {
-                const token = generateToken(user); // <<<<<<<<<<<<<<<<<<<<<<<<<
+  Users.findBy({ username })
+    .first()
+    .then(user => {
+      if (user && bcrypt.compareSync(password, user.password)) {
+        // grabbing the hash (encrypted password) and un-encrypting it to check against the encrypted
+        const token = generateToken(user); // <<<<<<<<<<<<<<<<<<<<<<<<<
 
-                res.status(200).json({
-                    message: `Welcome ${user.username}!`,
-                    token, // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-                });
-            } else {
-                res.status(401).json({ message: 'Invalid Credentials' });
-            }
-        })
-        .catch(error => {
-            res.status(500).json(error);
+        res.status(200).json({
+          message: `Welcome ${user.username}!`,
+          token // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         });
+      } else {
+        res.status(401).json({ message: "Invalid Credentials" });
+      }
+    })
+    .catch(error => {
+      res.status(500).json(error);
+    });
+});
+
+//test
+
+router.get("/", (req, res) => {
+  json.send("Hello");
 });
 
 function generateToken(user) {
-    const payload = {
-        subject: user.id, // standard claim = sub
-        username: user.username,
-        roles: ['student'],
-    };
+  const payload = {
+    subject: user.id, // standard claim = sub
+    username: user.username,
+    roles: ["student"]
+  };
 
-    const options = {
-        expiresIn: '1d',
-    };
+  const options = {
+    expiresIn: "1d"
+  };
 
-    return jwt.sign(payload, secrets.jwtSecret, options);
+  return jwt.sign(payload, secrets.jwtSecret, options);
 }
 
 module.exports = router;

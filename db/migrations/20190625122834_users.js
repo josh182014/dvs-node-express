@@ -1,3 +1,4 @@
+
 exports.up = function (knex, Promise) {
     return knex.schema.createTable("users", tbl => { //Table name 
         tbl.increments();  //ID
@@ -13,9 +14,15 @@ exports.up = function (knex, Promise) {
             .unique();
 
         tbl
-            .boolean("full-name") //full name 
+            .string("full-name") //full name 
+            .notNullable();
+
+        tbl
+            .string("email") //email 
             .notNullable()
-            .defaultTo(false);
+            .unique();
+
+
     });
 };
 

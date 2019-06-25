@@ -1,17 +1,20 @@
 // Update with your config settings.
 module.exports = {
-
+  /// below is knexConfig
   development: {
-    client: 'sqlite3',
+    //kenxConfig.development
+    client: "sqlite3",
     connection: {
-      filename: './data/dummy.db3'
+      // connecting path to the database
+      filename: "./db/auth.db3"
     },
     useNullAsDefault: true,
     migrations: {
-      directory: './data/migrations',
+      // connection path to the tables
+      directory: "./db/migrations"
     },
     seeds: {
-      directory: './data/seeds',
-    },
-  },
+      directory: "./db/seeds"
+    }
+  }
 };
