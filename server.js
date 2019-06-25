@@ -1,9 +1,10 @@
 const express = require("express");
+const cors = require("cors");
 const helmet = require("helmet");
 const server = express();
 
 // Import Routers
-const clientRouter = require("./Routes/clientRouter");
+const clientRouter = require("./Routes/routes");
 // const actionsRouter = require("./actions/actions-router");
 
 // Configure Middleware
