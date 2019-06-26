@@ -16,9 +16,14 @@ exports.up = function (knex, Promise) {
             
 
         tbl
-            .string("full-name") //full name 
+            .string("firstName") //full name 
             .notNullable();
 
+        tbl
+            .string("lastName") //last  name 
+            .notNullable();
+
+        
         tbl
             .string("email") //email 
             .notNullable()
