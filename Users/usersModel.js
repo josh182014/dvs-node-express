@@ -1,8 +1,11 @@
-// This file is needed for the app to get and add information
+// // This file is needed for the app to get and add information
 
-const knex = require('knex');
-const knexConfig = require('../knexfile'); // import knex object from the knex file
-const db = knex(knexConfig.development); //passes  knex config object to the knex function that accesses the database
+// const knex = require('knex');
+// const knexConfig = require('../knexfile'); // import knex object from the knex
+// const dbEnv = process.env.DB_ENV || 'development'
+
+
+// const db = knex(knex(Config.[dbEnv]); //passes  knex config object to the knex function that accesses the database
 
 
 module.exports = {
