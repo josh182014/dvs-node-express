@@ -10,7 +10,7 @@ const Users = require("./usersModel");
 module.exports = server => {
   server.post("/api/register", register);
   server.post("/api/login", login, authenticate);
-  server.get("/api/"); //main page?
+  server.get("/"); //main page?
 };
 
 function register(req, res) {
