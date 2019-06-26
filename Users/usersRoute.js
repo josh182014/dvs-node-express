@@ -1,15 +1,17 @@
-// CRUD endpoints
+// IMPORTS
 
 const axios = require("axios");
 const bcrypt = require("bcryptjs");
 
 const { authenticate, generateToken } = require("../auth/authenticate");
-const Users = require("./routes-model");
+const Users = require("./usersModel");
 
+
+//
 module.exports = server => {
     server.post("/api/register", register);
-    server.post("/api/login", login);
-    server.get("/api/", authenticate, );
+    server.post("/api/login", login, authenticate);
+    server.get("/api/"  ); //main page? 
 };
 
 function register(req, res) {
