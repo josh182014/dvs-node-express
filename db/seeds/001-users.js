@@ -8,21 +8,21 @@ exports.seed = function(knex, Promise) {
         {
           firstName: "Xenia",
           lastName: "Brown",
-          username: "username",
+          username: "xbrown",
           password: "password",
           email: "something1@email.com"
         },
         {
           firstName: "Braden",
           lastName: "Jeffers",
-          username: "username",
+          username: "bjeffers",
           password: "password",
           email: "something2@email.com"
         },
         {
           firstName: "Zamia",
           lastName: "Johnson",
-          username: "username",
+          username: "zjohnson",
           password: "password",
           email: "something3@email.com"
         }
