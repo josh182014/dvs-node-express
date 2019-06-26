@@ -5,9 +5,27 @@ exports.seed = function(knex, Promise) {
     .then(function() {
       // Inserts seed entries
       return knex("users").insert([
-        { id: 1, name: "wife" },
-        { id: 2, name: "husband" },
-        { id: 3, name: "friend" }
+        {
+          firstName: "Xenia",
+          lastName: "Brown",
+          username: "username",
+          password: "password",
+          email: "something1@email.com"
+        },
+        {
+          firstName: "Braden",
+          lastName: "Jeffers",
+          username: "username",
+          password: "password",
+          email: "something2@email.com"
+        },
+        {
+          firstName: "Zamia",
+          lastName: "Johnson",
+          username: "username",
+          password: "password",
+          email: "something3@email.com"
+        }
       ]);
     });
 };
