@@ -1,11 +1,11 @@
 // IMPORTS
 
-const axios = require("axios");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const secret = require("../Config/secrets");
+const axios = require("./node_modules/axios");
+const bcrypt = require("./node_modules/bcryptjs");
+const jwt = require("./node_modules/jsonwebtoken");
+const secret = require("../config/secrets");
 
-const authenticate = require("../Auth/restricted");
+const authenticate = require("../auth/restricted");
 const Users = require("./usersModel");
 
 //
