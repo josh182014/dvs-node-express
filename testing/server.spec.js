@@ -1,5 +1,7 @@
 const server = require("../api/server");
 const request = require("supertest");
+const db = require('../db/dbconfig');
+const users = require('../users/usersModel');
 require("dotenv").config();
 
 describe("GET/api", () => {
@@ -7,18 +9,25 @@ describe("GET/api", () => {
   it('has process.env.NODE_ENV as "test', () => {
     expect(process.env.NODE_ENV).toBe("test");
   });
-//tested - passed!
+
+
+
+  
+//GET endpoint tested - passed!
   it('returns 200 OK', () => {
     return request(server).get('/')
       .expect(200)
   }
   );
 
-  //new registration - 
-
-  it('returns 201 newUser', () => {
-    return request(server).get('/api/register')
-    .expect(201)
-  }
-  )
+  //POST Endpoint
+  // it("returns 201", () => {
+  //   return request(server)
+  //     .post("/register")
+  //     .send({ message: "welcome" })
+  //     .then(res => {
+  //       expect(res.status).toBe(201);
+  //     });
+  // });
+  
 });
