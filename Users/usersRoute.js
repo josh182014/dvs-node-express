@@ -10,7 +10,7 @@ const Users = require("./usersModel");
 module.exports = server => {
   server.post("/api/register", register);
   server.post("/api/login", login, authenticate);
-  server.get("/", (req, res) => {
+  server.get("/api", (req, res) => {
     res.json({ message: "Hello" });
   }); //main page?
 };
@@ -18,6 +18,7 @@ module.exports = server => {
 function register(req, res) {
   // implement user registration
   const hash = bcrypt.hashSync(req.body.password, 14);
+
   req.body.password = hash;
 
   Users.add(req.body)
