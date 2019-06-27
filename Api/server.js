@@ -3,10 +3,6 @@ const cors = require("cors");
 const helmet = require("helmet");
 const server = express();
 
-
-
-
-
 // Import Routers
 const usersRoute = require("../users/usersRoute");
 // const actionsRouter = require("./actions/actions-router");
@@ -18,7 +14,7 @@ server.use(cors());
 
 // Use Routers
 // server.use("/api/Users", usersRoute);
-usersRoute(server);
+// usersRoute(server);
 // server.use("/api/actions", actionsRouter);
 
 // Server Test
