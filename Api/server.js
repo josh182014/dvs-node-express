@@ -18,7 +18,11 @@ server.use("/api/Users", usersRoute);
 
 // Server Test
 server.get("/", (req, res) => {
-  res.send({ message: "DSV Tool" });
+  try {
+    res.send({ message: "DSV Tool" });
+  } catch (error) {
+    res.status(500).json(error.response);
+  }
 });
 
 module.exports = server;
