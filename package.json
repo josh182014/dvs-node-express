@@ -5,8 +5,11 @@
   "main": "index.js",
   "scripts": {
     "server": "nodemon index.js",
-    "start": "node index.js"
-   
+    "start": "node index.js",
+    "test": "jest --watch --verbose"
+  },
+  "jest": {
+    "testEnvirnoment": "node"
   },
   "repository": {
     "type": "git",
@@ -26,6 +29,7 @@
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "helmet": "^3.18.0",
+    "jest": "^24.8.0",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.17.6",
     "pg": "^7.11.0",
