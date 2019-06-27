@@ -2,6 +2,8 @@
 
 const axios = require("axios");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const secret = require("../Config/secrets");
 
 const authenticate = require("../Auth/restricted");
 const Users = require("./usersModel");
@@ -27,7 +29,7 @@ function register(req, res) {
     })
     .catch(err => {
       console.log("register", err);
-      res.status(500).json({ message: "Error registering user" });
+      res.status(500).json({ message: "Error registering user", error: err });
     });
 }
 
@@ -39,7 +41,16 @@ function login(req, res) {
     .first()
     .then(user => {
       if (user && bcrypt.compareSync(password, user.password)) {
-        const token = generateToken(user);
+        const token = jwt.sign(
+          {
+            subject: user.id,
+            username: user.username
+          },
+          secret.jwtSecret,
+          {
+            expiresIn: "1d"
+          }
+        );
         res.status(200).json({
           message: `Welcome ${user.username}!`,
 
@@ -53,6 +64,6 @@ function login(req, res) {
     })
     .catch(err => {
       console.log("Login error", err);
-      res.status(500).json({ message: "Login error" });
+      res.status(500).json({ message: "Login error", error: err });
     });
 }
