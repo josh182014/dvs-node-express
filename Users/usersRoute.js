@@ -1,8 +1,8 @@
 // IMPORTS
 
-const axios = require("./node_modules/axios");
-const bcrypt = require("./node_modules/bcryptjs");
-const jwt = require("./node_modules/jsonwebtoken");
+const axios = require("axios");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 const secret = require("../config/secrets");
 
 const authenticate = require("../auth/restricted");
@@ -14,7 +14,7 @@ module.exports = server => {
   server.post("/api/login", login, authenticate);
   server.get("/api", (req, res) => {
     res.json({ message: "Hello" });
-  }); //main page?
+  }); 
 };
 
 function register(req, res) {
