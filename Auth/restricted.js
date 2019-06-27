@@ -15,6 +15,8 @@ module.exports = (req, res, next) => {
                 req.user = { roles: decodeToken.roles, username: decodeToken.username };
                 next();
             }
+
+            
         });
     } else {
         res.status(400).json({ message: 'No token provided' });
