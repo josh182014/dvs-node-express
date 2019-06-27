@@ -4,7 +4,7 @@ const helmet = require("helmet");
 const server = express();
 
 // Import Routers
-const usersRoute = require("../users/usersRoute");
+const usersRoute = require("../Users/usersRoute");
 // const actionsRouter = require("./actions/actions-router");
 
 // Configure Middleware
@@ -14,7 +14,7 @@ server.use(cors());
 
 // Use Routers
 // server.use("/api/Users", usersRoute);
-// usersRoute(server);
+usersRoute(server);
 // server.use("/api/actions", actionsRouter);
 
 // Server Test

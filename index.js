@@ -2,7 +2,7 @@
 
 require("dotenv").config();
 
-const server = require("./api/server");
+const server = require("./api-test/server");
 
 const port = process.env.PORT || 4004; // dynamic port
 server.listen(port, () => console.log(`\n** server up on port ${port} **\n`));
